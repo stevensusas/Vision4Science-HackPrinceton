@@ -1,0 +1,10 @@
+{
+  "editor.formatOnSave": true,
+  "eslint.format.enable": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+  "eslint.validate": ["javascript"],
+  "eslint.workingDirectories": ["./src/app"],
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
