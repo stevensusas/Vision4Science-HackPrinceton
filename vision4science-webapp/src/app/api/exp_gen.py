@@ -36,7 +36,7 @@ def process_sequential_protocol(protocol):
     load_dotenv()
 
     client = OpenAI(
-      api_key=os.environ.get('mykey')
+      api_key="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"
     )
 
     max_attempts = 10

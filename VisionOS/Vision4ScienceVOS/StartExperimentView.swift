@@ -7,12 +7,12 @@ struct StartExperimentView: View {
         VStack {
             // Use the currentStepIndex to access the current step
             if let steps = viewModel.protocolItem?.steps, viewModel.progress < steps.count {
-                Text(steps[viewModel.progress])
+                Text(steps[viewModel.progress]).font(.system(size: 24))
             } else {
-                Text("No steps available or the experiment has concluded.")
+                Text("No steps available or the experiment has concluded.").font(.system(size: 24))
             }
         }
-        .navigationTitle("Start Experiment")
+        .navigationTitle("Experiment")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
