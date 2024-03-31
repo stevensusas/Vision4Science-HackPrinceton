@@ -36,7 +36,7 @@ def process_sequential_protocol(protocol):
     load_dotenv()
 
     client = OpenAI(
-      api_key="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"
+      api_key=os.getenv("mykey")
     )
 
     max_attempts = 10
@@ -64,7 +64,6 @@ def process_sequential_protocol(protocol):
             if steps_match and reagents_objects_match:
                 steps_array = ast.literal_eval(steps_match.group(1))
                 reagents_objects_array = ast.literal_eval(reagents_objects_match.group(1))
-                reagents_objects_array = find_similar_reagents(OpenAI(api_key='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'), reagents_objects_array)
                 data = {"steps": steps_array, "reagents_objects": reagents_objects_array}
                 success = True
                 return json.dumps(data)
