@@ -10,20 +10,22 @@ import Firebase
 import FirebaseCore
 @main
 struct Vision4ScienceVOSApp: App {
-    @StateObject var viewModel = ProtocolDetailViewModel(userId: "currentUser")
+    @State private var viewModel: ProtocolDetailViewModel;
     
     init() {
             FirebaseApp.configure()
+            viewModel = ProtocolDetailViewModel(userId: "currentUser")
         }
     
     var body: some Scene {
         WindowGroup {
            LoginPage()
-                .environmentObject(viewModel) // Provide the ViewModel to the environment
+                .environment(viewModel) // Provide the ViewModel to the environment
         }
         
         ImmersiveSpace (id: "Lab") {
-            BeakerView(viewModel: viewModel)
+            // BeakerView(viewModel: viewModel)
+            BeakerView().environment(viewModel)
             }
     }
     }

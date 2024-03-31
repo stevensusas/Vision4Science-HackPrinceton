@@ -11,7 +11,7 @@ struct BeakerView: View {
     static var cubeEntity = Entity()
     static var bottleEntity = Entity()
     @State private var subs: [EventSubscription] = []
-    @ObservedObject var viewModel: ProtocolDetailViewModel
+    @Environment(ProtocolDetailViewModel.self) var viewModel
 
     @State var color: SimpleMaterial.Color = SimpleMaterial.Color.red
     private let colors: [SimpleMaterial.Color] = [.red, .green, .blue, .systemBrown, .systemPurple, .systemMint]
@@ -29,15 +29,24 @@ struct BeakerView: View {
                     content.add(bottle)
                 }
                 
-                let event1 = content.subscribe(to: CollisionEvents.Began.self, on: BeakerView.cubeEntity) { ce in
-    
+                let cube = content.entities.first?.findEntity(named: "Beaker")
+                let bottle = content.entities.first?.findEntity(named: "Erlenmeyer Flask")
+                
+                
+                let event1 = content.subscribe(to: CollisionEvents.Began.self, on: cube) { ce in
+
+                    print("💥 (EVENT1MOD) Collision between \(ce.entityA.name) and \(ce.entityB.name)")
+
                                 }
                                 Task {
                                     subs.append(event1)
                                 }
                 
-                let event2 = content.subscribe(to: CollisionEvents.Began.self, on: BeakerView.bottleEntity) { ce in
-                    
+                
+                let event2 = content.subscribe(to: CollisionEvents.Began.self, on: bottle) { ce in
+
+                    print("💥 (EVENT2MOD) Collision between \(ce.entityA.name) and \(ce.entityB.name)")
+
                                 }
                                 Task {
                                     subs.append(event2)
@@ -66,6 +75,8 @@ struct BeakerView: View {
                                 BeakerView.cubeEntity.position = value.convert(value.location3D, from: .local, to: BeakerView.cubeEntity.parent!)
                             })
                             .onEnded({ _ in
+//                                print("VIEWMODEL PROTOCOL ITEM CUBE ENTITY:")
+//                                print(viewModel.protocolItem)
                                 viewModel.goToNextStep()
                             })
             )
@@ -76,6 +87,8 @@ struct BeakerView: View {
                         BeakerView.bottleEntity.position = value.convert(value.location3D, from: .local, to: BeakerView.bottleEntity.parent!)
                     })
                     .onEnded({ _ in
+//                        print("VIEWMODEL PROTOCOL ITEM BOTTLE ENTITY:")
+//                        print(viewModel.protocolItem)
                         viewModel.goToNextStep()
                     })
             )

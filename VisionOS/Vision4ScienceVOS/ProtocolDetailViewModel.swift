@@ -3,11 +3,12 @@ import FirebaseFirestore
 import RealityKit
 import RealityKitContent
 
+@Observable
 class ProtocolDetailViewModel: ObservableObject {
-    @Published var protocolItem: ScienceProtocol?
+    var protocolItem: ScienceProtocol?
     private var db = Firestore.firestore()
     private var userId: String  // Add a property for userId
-    @Published var progress: Int
+    var progress: Int
     
     init(userId: String) {  // Initialize with a userId
         self.userId = userId
@@ -18,6 +19,22 @@ class ProtocolDetailViewModel: ObservableObject {
             if let steps = self.protocolItem?.steps, self.progress < steps.count - 1 {
                 self.progress += 1
             }
+    }
+    
+    func setUserId(uid: String) {
+        userId = uid
+    }
+    
+    func setProtocolItem(pItem: ScienceProtocol?) {
+        protocolItem = pItem
+    }
+    
+    func getUserId() -> String {
+        return userId
+    }
+    
+    func getProtocolItem() -> ScienceProtocol? {
+        return protocolItem
     }
 
     func fetchProtocolDetail(protocolId: String) {

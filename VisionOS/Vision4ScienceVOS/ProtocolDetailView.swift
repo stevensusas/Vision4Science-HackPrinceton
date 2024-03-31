@@ -6,16 +6,10 @@ import FirebaseAuth
 
 
 struct ProtocolDetailView: View {
-    @ObservedObject var viewModel: ProtocolDetailViewModel
+    @Environment(ProtocolDetailViewModel.self) var viewModel
     var protocolId: String
     @Environment(\.openImmersiveSpace) var openImmersiveSpace
     @State private var navigateToStartExperiment = false
-    
-    
-    func setEnvironment() {
-        .environmentObject(viewModel)
-    }
-    
     
     var body: some View {
         ScrollView {
@@ -31,7 +25,7 @@ struct ProtocolDetailView: View {
                                     }
                                 }
 
-                NavigationLink(destination: StartExperimentView(viewModel: viewModel), isActive: $navigateToStartExperiment) {
+                NavigationLink(destination: StartExperimentView(), isActive: $navigateToStartExperiment) {
                                     EmptyView()
                                 }
 

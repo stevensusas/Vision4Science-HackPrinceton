@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct StartExperimentView: View {
-    @ObservedObject var viewModel: ProtocolDetailViewModel
+    @Environment(ProtocolDetailViewModel.self) var viewModel
 
     var body: some View {
         VStack {

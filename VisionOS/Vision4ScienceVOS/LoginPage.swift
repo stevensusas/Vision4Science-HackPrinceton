@@ -6,6 +6,7 @@ import FirebaseAuth
 
     
 struct LoginPage: View {
+    @Environment(ProtocolDetailViewModel.self) var viewModel
     @State private var email: String = ""
     @State private var password: String = ""
     @State private var errorMessage: String? = nil
@@ -23,6 +24,9 @@ struct LoginPage: View {
                     self.errorMessage = nil
                     self.navigateToProtocolList = true // Set this to true on successful login
                     print("User logged in successfully")
+                    print("VIEW MODEL AT LOGIN: ")
+                    print(viewModel)
+                    print(viewModel.getUserId())
                 }
             }
         }
