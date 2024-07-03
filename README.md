@@ -1,7 +1,8 @@
 # Vision4Science
 Demo: https://youtu.be/_w15n7nsV2U
 
-![image](https://github.com/stevensusas/Vision4Science-HackPrinceton/assets/113653645/9ab1b404-fcd6-418e-90d9-4a55b0a465a2)
+![Vision4Science Architecture (1)](https://github.com/stevensusas/Vision4Science-HackPrinceton/assets/113653645/95735086-9898-4b4b-aeb2-9a9541d0f92f)
+
 
 ## Inspiration
 
@@ -12,7 +13,6 @@ Demo: https://youtu.be/_w15n7nsV2U
 To use Vision4Science, simply register for an account and upload your text description of the experimental procedure on to our webapp. Then, log in to your account on your Apple Vision Pro, and select the experimental procedure you just uploaded and want to learn. Vision4Science will have utilized the text input and its generative AI engine to render an interactive space, providing all the materials, equipments you need, as well as a detailed step-by-step instruction on how to carry out the experiment with the objects around you. Happy learning!
 
 ## How we built it
-![image](https://github.com/stevensusas/Vision4Science-HackPrinceton/assets/113653645/6b3f9701-8645-43fc-937d-4ce8bc5ab686)
 
 We build the webapp with Next.js and React native. We used OpenAI API for the generative AI functionalities and Firebase for our database. To build the app on the Apple Vision Pro, we used Swift and Reality Composer Pro.
 
